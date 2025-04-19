@@ -26,8 +26,8 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleDebug
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v2.0.0
-        with:
-          name: MegaBackupApp-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+      - name: Upload APK with curl
+        run: |
+          curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -F "file=@app/build/outputs/apk/debug/app-debug.apk" \
+          https://api.github.com/repos/simo7689/MegaBackupApp/releases/assets
