@@ -27,7 +27,8 @@ jobs:
         run: ./gradlew assembleDebug
 
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.2.4
+        
 
         with:
           name: MegaBackupApp-APK
